@@ -1,0 +1,52 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시글 보기</title>    
+    <link rel="stylesheet" href="../item.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <fieldset>
+        <legend>게시글</legend>
+        <div>
+            <div class="box user-box">
+                <div class="subject user-title">제 목 </div>
+                <div id="title"></div>
+            </div>            
+        </div>
+        <div>
+            <div class="box title-box">
+                <div class="subject title-title">작성자</div>
+                <div id="user"></div>
+            </div>
+        </div>
+        <div>
+            <div class="box content-box">
+                <div class="subject content-title">내 용</div>
+                <div id="content"></div>
+            </div>
+        </div>
+        <div>          
+          <button class="back-button" onClick="location.href='/board'">뒤로가기</button>
+        </div>
+    </fieldset>
+    <script>
+        const urlParams = new URL(location.href).searchParams;
+        const itemId = urlParams.get('id');
+        console.log(itemId)
+        
+        const params = new URLSearchParams();
+        params.append('id', itemId);
+
+        async function getItem() {
+            const item = (await axios.post("/board/item", null, {params:params})).data;
+            console.log(item);
+            document.getElementById("title").innerHTML=item.title;
+            document.getElementById("user").innerHTML=item.user;
+            document.getElementById("content").innerHTML=item.content;
+        }
+        getItem();
+      </script>
+  </body>
+</html>

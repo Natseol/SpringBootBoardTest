@@ -1,0 +1,40 @@
+form fieldset {
+    width: fit-content;
+  }
+  
+form div {
+margin: 1rem;
+}
+
+.box {
+    margin: 5px;
+}
+.subject {
+    width: 60px;
+    text-align: center;
+}
+
+.user-box {
+    display: flex;
+}
+.user-title {
+    font-weight: bold;
+}
+
+.title-box {
+    display: flex;
+}
+.title-title {
+    font-weight: bold;
+}
+
+.content-box {
+    display: flex;
+}
+.content-title {
+    font-weight: bold;
+}
+
+.back-button {
+    margin: 10px;
+}
